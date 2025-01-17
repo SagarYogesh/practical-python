@@ -29,11 +29,16 @@ def read_portfolio(filename):
 
     with open(filename, 'rt') as f:
         rows = csv.reader(f)
-        columns = next(rows)
+        headers = next(rows)
+        select = ['name', 'shares', 'price']
+        indices = [headers.index(colname) for colname in select]
+
+        row = next(rows)
+
         for row in rows:
             try:
-                holding = dict(zip(columns, row))
-                portfolio.append(holding)
+                record = {colname:row[index] for colname, index in zip(select, indices)}
+                portfolio.append(record)
             except ValueError:
                 print("Couldn't parse", row)
 
