@@ -9,13 +9,15 @@ def read_portfolio(filename):
     Read a stock portfolio file into a list of dictionaries with keys
     name, shares, and price.
     '''
-    return fileparse.parse_csv(filename, select=['name','shares','price'], types=[str,int,float], has_headers=True)
+    with open(filename, 'rt') as file:
+        return fileparse.parse_csv(file, select=['name','shares','price'], types=[str,int,float], has_headers=True)
 
 def read_prices(filename):
     '''
     Read a CSV file of price data into a dict mapping names to prices.
     '''
-    return dict(fileparse.parse_csv(filename,types=[str,float], has_headers=False))
+    with open(filename, 'rt') as file:
+        return dict(fileparse.parse_csv(filename,types=[str,float], has_headers=False))
 
 def make_report_data(portfolio,prices):
     '''
