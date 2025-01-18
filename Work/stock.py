@@ -13,6 +13,9 @@ class Stock:
     def sell(self, nshares):
         self.shares -= nshares
 
+    def __repr__(self):
+        return f'Stock({repr(self.name)}, {repr(self.shares)}, {repr(self.price)})'
+
 class MyStock(Stock):
     def __init__(self, name, shares, price, factor):
         # Check the call to `super` and `__init__`
