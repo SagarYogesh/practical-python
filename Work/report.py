@@ -5,6 +5,7 @@
 import fileparse
 from stock import Stock
 import tableformat
+from portfolio import Portfolio
 
 def read_portfolio(filename):
     '''
@@ -17,7 +18,7 @@ def read_portfolio(filename):
                                         types=[str,int,float], has_headers=True)
 
     portfolio = [ Stock(d['name'], d['shares'], d['price']) for d in portdicts ]
-    return portfolio
+    return Portfolio(portfolio)
 
 def read_prices(filename):
     '''
