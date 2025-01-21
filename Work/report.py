@@ -15,7 +15,7 @@ def read_portfolio(filename, **opts):
     with open(filename) as lines:
         return Portfolio.from_csv(lines, **opts)
 
-def read_prices(filename):
+def read_prices(filename, **opts):
     '''
     Read a CSV file of price data into a dict mapping names to prices.
     '''
@@ -67,3 +67,10 @@ def main(args):
 if __name__ == '__main__':
     import sys
     main(sys.argv)
+
+    import logging
+    logging.basicConfig(
+        filename = 'app.log',
+        filemode = 'w',
+        level = logging.WARNING,
+    )
