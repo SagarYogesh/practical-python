@@ -1,38 +1,34 @@
 '''
 Exercise 4 OOPS
 '''
+from typedproperty import String, Integer, Float
+
 class Stock:
-    __slots__ = ('name', '_shares', 'price')
+    '''
+    An instance of a stock holding consisting of name, shares, and price.
+    '''
+
+    name = String('name')
+    shares = Integer('shares')
+    price = Float('price')
+
     def __init__(self, name, shares, price):
         self.name = name
-        self._shares = shares
+        self.shares = shares
         self.price = price
-
-    @property
-    def shares(self):
-        return self._shares
-
-    @shares.setter
-    def shares(self, value):
-        if not isinstance(value, int):
-            raise TypeError('Expected int')
-        self._shares = value
-
-    @property
-    def cost(self):
-        return self.shares * self.price
-
-    def sell(self, nshares):
-        self.shares -= nshares
 
     def __repr__(self):
         return f'Stock({repr(self.name)}, {repr(self.shares)}, {repr(self.price)})'
-
-class MyStock(Stock):
-    def __init__(self, name, shares, price, factor):
-        # Check the call to `super` and `__init__`
-        super().__init__(name, shares, price)
-        self.factor = factor
-
+        
+    @property
     def cost(self):
-        return self.factor * super().cost()
+        '''
+        Return the cost as shares*price
+        '''
+        return self.shares * self.price
+
+    def sell(self, nshares):
+        '''
+        Sell a number of shares and return the remaining number.
+        '''
+        self.shares -= nshares
