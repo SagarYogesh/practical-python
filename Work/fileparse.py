@@ -4,7 +4,7 @@
 
 import csv
 
-def parse_csv(file, select=None, types=None, has_headers=False, delimiter=',', silence_errors=False):
+def parse_csv(file, select=None, types=None, has_headers=True, delimiter=',', silence_errors=False):
     '''
     Parse a csv file into a list of record
     '''
@@ -12,7 +12,7 @@ def parse_csv(file, select=None, types=None, has_headers=False, delimiter=',', s
         raise RuntimeError('select requires column headers')
 
     rows = csv.reader(file, delimiter=delimiter)
-    
+
     #Read the file headers if any
     if has_headers:
         headers = next(rows)
