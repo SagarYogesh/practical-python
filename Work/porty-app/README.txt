@@ -1,0 +1,1 @@
+First foray into Python programming. Hopefully leads into something fruitful!

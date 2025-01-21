@@ -1,7 +1,7 @@
 '''
 Exercise 4 OOPS
 '''
-from typedproperty import String, Integer, Float
+from .typedproperty import String, Integer, Float
 
 class Stock:
     '''
@@ -19,7 +19,7 @@ class Stock:
 
     def __repr__(self):
         return f'Stock({repr(self.name)}, {repr(self.shares)}, {repr(self.price)})'
-        
+
     @property
     def cost(self):
         '''
