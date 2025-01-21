@@ -26,8 +26,7 @@ def parse_stock_data(lines):
 def ticker(portfile, logfile, fmt):
     portfolio = report.read_portfolio(portfile)
     rows = parse_stock_data(follow(logfile))
-    rows = filter_symbols(rows, portfolio)
-    rows = (row for row in rows if row['Name'] in names)
+    rows = (row for row in rows if row['Name'] in portfolio)
 
     #Printing it out in required format
     formatter = tableformat.create_formatter(fmt)
