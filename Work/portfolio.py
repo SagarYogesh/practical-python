@@ -1,7 +1,6 @@
 # portfolio.py
 
 class Portfolio:
-
     def __init__(self, holdings):
         self._holdings = holdings
 
